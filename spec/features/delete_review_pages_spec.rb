@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe "the delete a work process" do
-  it "deletes a work" do
+describe "the delete a review process" do
+  it "deletes a review" do
     visit works_path
     click_link 'New Comic'
     fill_in 'Name', :with => 'Batman'
@@ -12,7 +12,12 @@ describe "the delete a work process" do
     fill_in 'Image', :with => 'http://www.go.com'
     click_on 'Save'
     click_link 'Batman'
-    click_link 'Delete Batman'
-    expect(page).to_not have_content 'Batman'
+    click_link 'New Review'
+    fill_in 'Name', :with => 'James Capullo'
+    fill_in 'Details', :with => 'sad'
+    fill_in 'Rating', :with => 1
+    click_on 'Save'
+    click_link 'Delete'
+    expect(page).to_not have_content 'sad'
   end
 end

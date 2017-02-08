@@ -19,6 +19,8 @@
   <li> Name: <%= r.name %> </li>
   <li> <%= r.details %> </li>
   <li> <%= r.rating %> </li>
+  <%= link_to "Edit", edit_work_review_path(@work, r) %> |
+  <%= link_to "Delete", work_review_path(@work, r),:data => {:confirm => "Are you sure?",:method => "delete"} %>
   <% end %>
 </ul>
 <% else %>
