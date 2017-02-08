@@ -1,0 +1,25 @@
+<h1>Details for <%= @work.name %> </h1>
+
+<ul>
+  <li><%= @work.name %></li>
+  <li><%= @work.description %></li>
+  <li><%= @work.artist %></li>
+  <li><%= @work.author %></li>
+  <li><%= @work.subgenre %></li>
+  <li><%= @work.image %></li>
+  <li><%= @work.avgrating %></li>
+</ul>
+
+<h3>Reviews for <%= @work.name %> </h3>
+
+<ul>
+  <%= @work.reviews.each do |r| %>
+  <li> Name: <%= r.name %> </li>
+  <li> <%= r.details %> </li>
+  <li> <%= r.rating %> </li>
+  <% end %>
+</ul>
+
+<hr>
+<%= link_to "Works", works_path %> |
+<%= link_to "Delete Work", work_path(@work),:data => {:confirm => "Are you sure?",:method => "delete"} %> |

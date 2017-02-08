@@ -22,27 +22,28 @@ class WorksController < ApplicationController
       render :new
     end
   end
-  #
-  # def edit
-  #   @work = Work.find(params[:id])
-  # end
-  #
-  # def update
-  #   @work = work.find(params[:id])
-  #   if @work.update(work_params)
-  #     flash[:notice] = "Work successfully updated!"
-  #     redirect_to works_path
-  #   else
-  #     render :edit
-  #   end
-  # end
-  #
-  # def destroy
-  #   @work = Work.find(params[:id])
-  #   @work.destroy
-  #   flash[:notice] = "Work deleted!"
-  #   redirect_to works_path
-  # end
+
+  def edit
+    @work = Work.find(params[:id])
+  end
+
+  def update
+    @work = Work.find(params[:id])
+    if @work.update(work_params)
+      flash[:notice] = "Work successfully updated!"
+      redirect_to works_path
+    else
+      flash[:notice] = "Work succesfully NOT updated!"
+      render :edit
+    end
+  end
+
+  def destroy
+    @work = Work.find(params[:id])
+    @work.destroy
+    flash[:notice] = "Work deleted!"
+    redirect_to works_path
+  end
 
   private
     def work_params
