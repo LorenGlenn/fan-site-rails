@@ -1,5 +1,6 @@
 <h1>Details for <%= @work.name %> </h1>
 
+
 <ul>
   <li><%= @work.name %></li>
   <li><%= @work.description %></li>
@@ -10,16 +11,21 @@
   <li><%= @work.avgrating %></li>
 </ul>
 
+<% if @work.reviews.any? %>
 <h3>Reviews for <%= @work.name %> </h3>
 
 <ul>
-  <%= @work.reviews.each do |r| %>
+  <% @work.reviews.each do |r| %>
   <li> Name: <%= r.name %> </li>
   <li> <%= r.details %> </li>
   <li> <%= r.rating %> </li>
   <% end %>
 </ul>
+<% else %>
+  <p>There are no reviews yet!</p>
+<% end %>
 
+<%= link_to "New Review", new_work_review_path(@work) %>
 <hr>
 <%= link_to "Works", works_path %> |
 <%= link_to "Delete Work", work_path(@work),:data => {:confirm => "Are you sure?",:method => "delete"} %> |
