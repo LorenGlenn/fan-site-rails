@@ -5,4 +5,11 @@ class Work < ApplicationRecord
   validates :artist, :presence => true
   validates :author, :presence => true
   validates :image, :presence => true
+
+  before_save :Titlecase
+
+  private
+  def Titlecase
+    self.name = name.titlecase
+  end
 end

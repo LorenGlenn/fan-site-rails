@@ -3,8 +3,7 @@
 
 <ul>
   <% @works.each do |work| %>
-    <li><%= link_to work.name, work_path(work) %> |
-      <%= link_to "Edit", edit_work_path(work) %>
+    <li><%= link_to work.name, work_path(work) %>
     </li>
   <% end %>
 </ul>

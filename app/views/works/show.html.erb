@@ -27,5 +27,6 @@
 
 <%= link_to "New Review", new_work_review_path(@work) %>
 <hr>
-<%= link_to "Works", works_path %> |
-<%= link_to "Delete Work", work_path(@work),:data => {:confirm => "Are you sure?",:method => "delete"} %> |
+<%= link_to "All Comics", works_path %> |
+<%= link_to "Edit " + @work.name, edit_work_path(@work) %> |
+<%= link_to "Delete " + @work.name, work_path(@work),:data => {:confirm => "Are you sure?",:method => "delete"} %> |
