@@ -2,4 +2,7 @@
 
 <%= render "form" %>
 
-<%= link_to "Work", work_path(@work) %>
+<hr>
+
+<%= link_to "Back to " + @work.name, work_path(@work) %> |
+<%= link_to "All Comics", works_path(@work) %>

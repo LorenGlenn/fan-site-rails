@@ -5,7 +5,7 @@ class CreateWorks < ActiveRecord::Migration[5.0]
       t.column :description, :string
       t.column :artist, :string
       t.column :author, :string
-      t.column :avgrating, :integer
+      t.column :avgrating, :float
       t.column :subgenre, :string
       t.column :image, :string
 

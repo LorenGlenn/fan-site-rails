@@ -14,6 +14,7 @@ class WorksController < ApplicationController
 
   def create
     @work = Work.new(work_params)
+    @work.avgrating=1.00
     if @work.save
       flash[:notice] = "Work succesfully added!"
       redirect_to works_path

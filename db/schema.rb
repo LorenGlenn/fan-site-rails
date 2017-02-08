@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20170208170715) do
   create_table "reviews", force: :cascade do |t|
     t.string   "name"
     t.string   "details"
-    t.integer  "rating"
+    t.float    "rating"
     t.integer  "work_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20170208170715) do
     t.string   "description"
     t.string   "artist"
     t.string   "author"
-    t.integer  "avgrating"
+    t.float    "avgrating"
     t.string   "subgenre"
     t.string   "image"
     t.datetime "created_at",  null: false

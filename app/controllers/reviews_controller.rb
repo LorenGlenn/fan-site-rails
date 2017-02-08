@@ -9,6 +9,8 @@ class ReviewsController < ApplicationController
     @work = Work.find(params[:work_id])
     @review = @work.reviews.new(review_params)
     if @review.save
+      @work.avgrating = (((@work.avgrating * (@work.reviews.length - 1))+ @review.rating) / @work.reviews.length)
+      @work.save
       flash[:notice] = "Review Saved!"
       redirect_to work_path(@review.work)
     else
@@ -26,7 +28,11 @@ class ReviewsController < ApplicationController
   def update
     @work = Work.find(params[:work_id])
     @review = Review.find(params[:id])
+    @work.avgrating = (((@work.avgrating * @work.reviews.length)- @review.rating) / (@work.reviews.length - 1))
+    @work.save
     if @review.update(review_params)
+      @work.avgrating = (((@work.avgrating * (@work.reviews.length - 1))+ @review.rating) / @work.reviews.length)
+      @work.save
       flash[:notice] = "Review Updated"
       redirect_to work_path(@review.work)
     else
@@ -37,6 +43,8 @@ class ReviewsController < ApplicationController
   def destroy
     @work = Work.find(params[:work_id])
     @review = Review.find(params[:id])
+    @work.avgrating = (((@work.avgrating * @work.reviews.length)- @review.rating) / (@work.reviews.length - 1))
+    @work.save
     @review.destroy
     flash[:notice] = "Review Deleted!"
       redirect_to work_path(@review.work)# still getting work_review data but redirecting to work
