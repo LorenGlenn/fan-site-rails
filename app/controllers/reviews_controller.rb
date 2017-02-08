@@ -29,7 +29,12 @@ class ReviewsController < ApplicationController
     @work = Work.find(params[:work_id])
     @review = Review.find(params[:id])
     @work.avgrating = (((@work.avgrating * @work.reviews.length)- @review.rating) / (@work.reviews.length - 1))
-    @work.save
+    if @work.avgrating.nan?
+      @work.avgrating = 1
+      @work.save
+    else
+      @work.save
+    end
     if @review.update(review_params)
       @work.avgrating = (((@work.avgrating * (@work.reviews.length - 1))+ @review.rating) / @work.reviews.length)
       @work.save
@@ -44,7 +49,12 @@ class ReviewsController < ApplicationController
     @work = Work.find(params[:work_id])
     @review = Review.find(params[:id])
     @work.avgrating = (((@work.avgrating * @work.reviews.length)- @review.rating) / (@work.reviews.length - 1))
-    @work.save
+    if @work.avgrating.nan?
+      @work.avgrating = 1
+      @work.save
+    else
+      @work.save
+    end
     @review.destroy
     flash[:notice] = "Review Deleted!"
       redirect_to work_path(@review.work)# still getting work_review data but redirecting to work
