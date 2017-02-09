@@ -2,38 +2,44 @@
 
 <div class="row">
   <div class="col-md-5 well2">
-<%= image_tag @work.image %>
+  <%= image_tag @work.image, :class => "center-img" %>
   </div>
   <div class="col-md-5 well2">
+    <div class="pull-right">
 
-  <h3>Name: <%= @work.name %></h3>
+
+    <%= link_to "Edit " + @work.name, edit_work_path(@work) %> |
+    <%= link_to "Delete " + @work.name, work_path(@work),:data => {:confirm => "Are you sure?",:method => "delete"} %>
+</div>
+  <h4>Name: <span class="titles"><%= @work.name %><span></h4>
   <h4>Description: <%= @work.description %></h4>
   <h4>Artist: <%= @work.artist %></h4>
   <h4>Author: <%= @work.author %></h4>
-  <h4>SubGenre: <%= @work.subgenre %></h4>
+  <h4>Genre: <%= @work.subgenre %></h4><hr>
   <h4>Average Fan Rating: <%= @work.avgrating %></h4>
+<br>
+
   </div>
 </div>
 
 <% if @work.reviews.any? %>
-<h3>Reviews for <%= @work.name %> </h3>
+<h3>Reviews for <%= @work.name %> | <span class="new-review"><%= link_to "New Review", new_work_review_path(@work)%></span></h3>
 
-<ul>
+
   <% @work.reviews.each do |r| %>
-  <li> Name: <%= r.name %> </li>
-  <li> <%= r.details %> </li>
-  <li> <%= r.rating %> </li>
-  <small> Posted: <%= time_ago_in_words(r.created_at) %> ago </small>
-  <br>
+<div class="col-md-5 well2">
+  <div class="pull-right">
   <%= link_to "Edit", edit_work_review_path(@work, r) %> |
   <%= link_to "Delete", work_review_path(@work, r),:data => {:confirm => "Are you sure?",:method => "delete"} %>
+  </div>
+  <li>Name: <%= r.name %></li>
+  <li>Comments: <%= r.details %></li>
+  <li>Rating: <%= r.rating %></li>
+  <small> Posted: <%= time_ago_in_words(r.created_at) %> ago </small>
+  <br>
+
+</div>
   <% end %>
-</ul>
 <% else %>
   <p>There are no reviews yet!</p>
 <% end %>
-
-<%= link_to "New Review", new_work_review_path(@work) %>
-<hr>
-<%= link_to "Edit " + @work.name, edit_work_path(@work) %> |
-<%= link_to "Delete " + @work.name, work_path(@work),:data => {:confirm => "Are you sure?",:method => "delete"} %> |
