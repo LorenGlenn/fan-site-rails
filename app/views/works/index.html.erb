@@ -1,13 +1,27 @@
-<h1>Works</h1>
 
 
-<ul>
+<h1>Comics</h1>
+
+<div class="row">
+  <div class="dark center">
+  <h3 class="white">Featured</h3>
+  <div class="well">
+  <%= link_to image_tag(@works[1].image)%>
+  </div>
+</div>
+</div>
+
+
+
+<div class="row"> <!-- featured -->
   <% @works.each do |work| %>
-    <li><%= link_to work.name, work_path(work) %>
-    </li>
+    <div class="col-md-6"><!-- main -->
+      <div class="box well">
+      <%= link_to image_tag(work.image), work_path(work) %>
+       <h3><%= link_to work.name, work_path(work) %></h3>
+      <small>Uploaded: <%= work.created_at.to_date %></small>
+    </div>
+  </div>
   <% end %>
-</ul>
 
-<hr>
-<%= link_to "All Comics", works_path %> |
-<%= link_to "New Comic", new_work_path %>
+  </div>

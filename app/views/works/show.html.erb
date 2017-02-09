@@ -2,12 +2,12 @@
 
 
 <ul>
+  <li><%= image_tag @work.image %></li>
   <li><%= @work.name %></li>
   <li><%= @work.description %></li>
   <li><%= @work.artist %></li>
   <li><%= @work.author %></li>
   <li><%= @work.subgenre %></li>
-  <li><%= @work.image %></li>
   <li><%= @work.avgrating %></li>
 </ul>
 
@@ -19,6 +19,8 @@
   <li> Name: <%= r.name %> </li>
   <li> <%= r.details %> </li>
   <li> <%= r.rating %> </li>
+  <small> Posted: <%= time_ago_in_words(r.created_at) %> ago </small>
+  <br>
   <%= link_to "Edit", edit_work_review_path(@work, r) %> |
   <%= link_to "Delete", work_review_path(@work, r),:data => {:confirm => "Are you sure?",:method => "delete"} %>
   <% end %>
@@ -29,6 +31,5 @@
 
 <%= link_to "New Review", new_work_review_path(@work) %>
 <hr>
-<%= link_to "All Comics", works_path %> |
 <%= link_to "Edit " + @work.name, edit_work_path(@work) %> |
 <%= link_to "Delete " + @work.name, work_path(@work),:data => {:confirm => "Are you sure?",:method => "delete"} %> |

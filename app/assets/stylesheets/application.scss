@@ -1,7 +1,39 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+* {
+  font-family: 'Bangers', cursive;
+  letter-spacing: 2px;
+}
 
 li {
   list-style-type: none;
+}
+
+
+.box {
+  text-align: center;
+}
+
+.well {
+  padding: 10px 10px;
+  margin: 30px 10px;
+  width: 350px;
+}
+
+
+.dark {
+  background-color: #222;
+}
+
+
+.center {
+
+  text-align: center;
+  padding: 10px;
+}
+
+.white {
+  color: #fff;
+  padding: 20px
 }
