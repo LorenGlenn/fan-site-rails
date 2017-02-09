@@ -1,5 +1,22 @@
 <h1 class="center"><%= image_tag "tag.png", :class => "header-brand"%>Comic Emporium</h1>
 
+
+<% if @results.any? %>
+<h3>Search Results:</h3>
+<ul>
+  <% @results.each do |r| %>
+  <li><%= image_tag r.image %></li>
+  <li><%= r.name %></li>
+  <li><%= r.description %></li>
+  <li><%= r.artist %></li>
+  <li><%= r.author %></li>
+  <li><%= r.subgenre %></li>
+  <li><%= r.avgrating %></li>
+  <small> Posted: <%= time_ago_in_words(r.created_at) %> ago </small>
+  <% end %>
+</ul>
+<% else %>
+
 <div class="row">
   <div class="dark center">
   <h3 class="white">Featured</h3>
@@ -11,6 +28,7 @@
 
 <br>
 <h4>Sort By: <%= link_to "A-Z", :sort_by => "name" %> | <%= link_to "Rating", :sort_by => "avgrating" %> | <%= link_to "Create Date", :sort_by => "created_at" %></h4>
+
 <div class="row"> <!-- featured -->
   <% @works.each do |work| %>
     <div class="col-md-4 center"><!-- main -->
@@ -25,3 +43,4 @@
   <% end %>
 
   </div>
+  <% end %>

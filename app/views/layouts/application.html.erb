@@ -18,7 +18,7 @@
       <%= link_to "New Comic", new_work_path, :class => 'navbar-brand' %>
 
       <div class="pull-right">
-      <%= form_tag(works_search_path, :method => "get", id: "search-form") do %>
+      <%= form_tag(works_path, :method => "get", id: "search-form") do %>
           <%= text_field_tag :search, params[:search], placeholder: "Search", :class => 'search-field'%>
           <%= submit_tag "Search", :name => nil, :class => "btn btn-primary search-field" %>
       <% end %>

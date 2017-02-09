@@ -2,6 +2,7 @@ class WorksController < ApplicationController
 
   def index
     @works = Work.order(params[:sort_by])# .order does .all as well
+    @results = Work.basic_search(params[:search])
     render :index
   end
 
@@ -47,10 +48,6 @@ class WorksController < ApplicationController
     redirect_to works_path
   end
 
-  def search
-    @results = Work.basic_search(params[:search])
-    render :results
-  end
 
   private
     def work_params
