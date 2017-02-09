@@ -5,7 +5,7 @@
   <%= image_tag @work.image, :class => "center-img" %>
   </div>
   <div class="col-md-5 well2">
-  <h4>Name: <span class="titles"><%= @work.name %><span></h4>
+  <h4>Title: <span class="titles"><%= @work.name %><span></h4>
   <h4>Description: <%= @work.description %></h4>
   <h4>Artist: <%= @work.artist %></h4>
   <h4>Author: <%= @work.author %></h4>
@@ -14,13 +14,11 @@
   <br>
     <%= link_to "Edit " + @work.name, edit_work_path(@work) %> |
     <%= link_to "Delete " + @work.name, work_path(@work),:data => {:confirm => "Are you sure?",:method => "delete"} %>
-
   </div>
 </div>
 
 <% if @work.reviews.any? %>
 <h3>Reviews for <%= @work.name %> | <span class="new-review"><%= link_to "New Review", new_work_review_path(@work)%></span></h3>
-
 
   <% @work.reviews.each do |r| %>
 <div class="col-md-5 well2">
@@ -33,7 +31,6 @@
   <li>Rating: <%= r.rating %></li>
   <small> Posted: <%= time_ago_in_words(r.created_at) %> ago </small>
   <br>
-
 </div>
   <% end %>
 <% else %>

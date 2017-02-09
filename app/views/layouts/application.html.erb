@@ -4,10 +4,8 @@
     <div class="container">
     <title>Comic Emporium</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
-
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
@@ -19,16 +17,13 @@
 
       <div class="pull-right">
       <%= form_tag('/', :method => "get", id: "search-form") do %>
-          <%= text_field :search, params[:search], placeholder: "Search", :class => 'search-field'%>
+          <%= text_field :search, params[:search], placeholder: "Search", :class => 'search-input'%>
           <%= submit_tag "Search", :name => nil, :class => "btn btn-primary search-field" %>
       <% end %>
       </div>
-
     </nav>
-
     <%= flash[:alert] %>
     <%= flash[:notice] %>
-
     <%= yield %>
 
   </body>

@@ -25,9 +25,7 @@
     </div>
   </div>
   <% end %>
-
   </div>
-
 
 <% else %>
 <div class="row  ">
@@ -36,15 +34,15 @@
     <div class="col-md-12 ">
       <div class="well">
     <li><%= link_to image_tag(r.image), work_path(r) %></li>
-    <h3><%= r.name %></h3>
-    <h4><%= r.description %></h4>
-    <h4><%= r.artist %></h4>
-    <h4><%= r.author %></h4>
-    <h4><%= r.subgenre %></h4>
-    <h4><%= r.avgrating %></h4>
+    <h3>Title: <%= r.name %></h3>
+    <h4>Description: <%= r.description %></h4>
+    <h4>Artist: <%= r.artist %></h4>
+    <h4>Author: <%= r.author %></h4>
+    <h4>Genre: <%= r.subgenre %></h4>
+    <h4>Average Rating: <%= r.avgrating %></h4>
     <small> Posted: <%= time_ago_in_words(r.created_at) %> ago </small>
     <% end %>
-    </div>
   </div>
-    </div>
-    <% end %>
+  </div>
+</div>
+<% end %>
