@@ -1,7 +1,7 @@
 class WorksController < ApplicationController
 
   def index
-    @works = Work.all
+    @works = Work.order(params[:sort_by])# .order does .all as well
     render :index
   end
 
@@ -45,11 +45,6 @@ class WorksController < ApplicationController
     @work.destroy
     flash[:notice] = "Work deleted!"
     redirect_to works_path
-  end
-
-  def sort
-    @works = Work.all.order("name")
-    render :index
   end
 
   def search

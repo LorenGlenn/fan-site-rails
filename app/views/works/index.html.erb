@@ -10,14 +10,16 @@
 </div>
 
 <br>
-<h4>Sort By: <%= link_to "A-Z", works_sort_path %> | </h4>
+<h4>Sort By: <%= link_to "A-Z", :sort_by => "name" %> | <%= link_to "Rating", :sort_by => "avgrating" %> | <%= link_to "Create Date", :sort_by => "created_at" %></h4>
 <div class="row"> <!-- featured -->
   <% @works.each do |work| %>
     <div class="col-md-4 center"><!-- main -->
       <div class="box well">
+        <small>Uploaded: <%= work.created_at.to_date %></small>
       <%= link_to image_tag(work.image), work_path(work) %>
        <h3><%= link_to work.name, work_path(work) %></h3>
-      <small>Uploaded: <%= work.created_at.to_date %></small>
+       <p>Last reviewed: <%= time_ago_in_words(work.reviews[work.reviews.length - 1].created_at) %> ago </p>
+       <h4> Reviews: <%= work.reviews.length %> -- Avg. Rating: <%= work.avgrating %>/10  </h4>
     </div>
   </div>
   <% end %>
