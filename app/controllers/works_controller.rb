@@ -2,6 +2,7 @@ class WorksController < ApplicationController
 
   def index
     @works = Work.all
+    render :index
   end
 
   def show
@@ -46,6 +47,11 @@ class WorksController < ApplicationController
     redirect_to works_path
   end
 
+  def sort
+    @works = Work.all.order("name")
+    render :index
+  end
+#test
   private
     def work_params
       params.require(:work).permit(:name, :description, :artist, :author, :subgenre, :image )

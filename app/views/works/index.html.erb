@@ -1,12 +1,13 @@
-
-
 <h1>Comics</h1>
+
+<%= link_to "Sort AtoZ", work_sort_path(@works[0]) %>
+
 
 <div class="row">
   <div class="dark center">
   <h3 class="white">Featured</h3>
-  <div class="well">
-  <%= link_to image_tag(@works[1].image)%>
+  <div class="well2">
+  <%= link_to image_tag(@works[0].image)%>
   </div>
 </div>
 </div>
