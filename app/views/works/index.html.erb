@@ -1,48 +1,50 @@
 <h1 class="center"><%= image_tag "tag.png", :class => "header-brand"%>Comic Emporium</h1>
 
-<% if @results.any? %>
+<% if @results.empty? %>
+<div class="row">
+  <div class="dark center">
+  <h3 class="white">Featured</h3>
+  <div class="well2">
+  <%= link_to image_tag(@random.image), work_path(@random)%>
+  </div>
+</div>
+</div>
 
+<br>
+<h4>Sort By: <%= link_to "A-Z", :sort_by => "name" %> | <%= link_to "Rating", :sort_by => "avgrating" %> | <%= link_to "Create Date", :sort_by => "created_at" %></h4>
 
-<h3>Search Results:</h3>
-<ul>
-  <% @results.each do |r| %>
-  <li><%= image_tag r.image %></li>
-  <li><%= r.name %></li>
-  <li><%= r.description %></li>
-  <li><%= r.artist %></li>
-  <li><%= r.author %></li>
-  <li><%= r.subgenre %></li>
-  <li><%= r.avgrating %></li>
-  <small> Posted: <%= time_ago_in_words(r.created_at) %> ago </small>
+<div class="row"> <!-- featured -->
+  <% @works.each do |work| %>
+    <div class="col-md-4 center"><!-- main -->
+      <div class="box well">
+        <small>Uploaded: <%= work.created_at.to_date %></small>
+      <%= link_to image_tag(work.image), work_path(work) %>
+       <h3><%= link_to work.name, work_path(work) %></h3>
+       <p>Last reviewed: <%= time_ago_in_words(work.reviews[work.reviews.length - 1].created_at) %> ago </p>
+       <h4> Reviews: <%= work.reviews.length %> -- Avg. Rating: <%= work.avgrating %>/10  </h4>
+    </div>
+  </div>
   <% end %>
-</ul>
+
+  </div>
+
+
 <% else %>
-
-  <div class="row">
-    <div class="dark center">
-    <h3 class="white">Featured</h3>
-    <div class="well2">
-    <%= link_to image_tag(@works[rand(0..@works.length - 1)].image)%>
-    </div>
-  </div>
-  </div>
-
-  <br>
-  <h4>Sort By: <%= link_to "A-Z", :sort_by => "name" %> | <%= link_to "Rating", :sort_by => "avgrating" %> | <%= link_to "Create Date", :sort_by => "created_at" %></h4>
-
-  <div class="row"> <!-- featured -->
-    <% @works.each do |work| %>
-      <div class="col-md-4 center"><!-- main -->
-        <div class="box well">
-          <small>Uploaded: <%= work.created_at.to_date %></small>
-        <%= link_to image_tag(work.image), work_path(work) %>
-         <h3><%= link_to work.name, work_path(work) %></h3>
-         <p>Last reviewed: <%= time_ago_in_words(work.reviews[work.reviews.length - 1].created_at) %> ago </p>
-         <h4> Reviews: <%= work.reviews.length %> -- Avg. Rating: <%= work.avgrating %>/10  </h4>
-      </div>
-    </div>
+<div class="row  ">
+  <h3>Search Results:</h3>
+    <% @results.each do |r| %>
+    <div class="col-md-12 ">
+      <div class="well">
+    <li><%= link_to image_tag(r.image), work_path(r) %></li>
+    <h3><%= r.name %></h3>
+    <h4><%= r.description %></h4>
+    <h4><%= r.artist %></h4>
+    <h4><%= r.author %></h4>
+    <h4><%= r.subgenre %></h4>
+    <h4><%= r.avgrating %></h4>
+    <small> Posted: <%= time_ago_in_words(r.created_at) %> ago </small>
     <% end %>
-
     </div>
-
+  </div>
+    </div>
     <% end %>

@@ -2,6 +2,7 @@ class WorksController < ApplicationController
 
   def index
     @works = Work.order(params[:sort_by])# .order does .all as well
+    @random = @works[rand(0..@works.length - 1)]
     @results = Work.basic_search(params[:search])
     render :index
   end

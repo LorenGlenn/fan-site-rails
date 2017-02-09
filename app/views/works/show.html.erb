@@ -5,19 +5,15 @@
   <%= image_tag @work.image, :class => "center-img" %>
   </div>
   <div class="col-md-5 well2">
-    <div class="pull-right">
-
-
-    <%= link_to "Edit " + @work.name, edit_work_path(@work) %> |
-    <%= link_to "Delete " + @work.name, work_path(@work),:data => {:confirm => "Are you sure?",:method => "delete"} %>
-</div>
   <h4>Name: <span class="titles"><%= @work.name %><span></h4>
   <h4>Description: <%= @work.description %></h4>
   <h4>Artist: <%= @work.artist %></h4>
   <h4>Author: <%= @work.author %></h4>
   <h4>Genre: <%= @work.subgenre %></h4><hr>
   <h4>Average Fan Rating: <%= @work.avgrating %></h4>
-<br>
+  <br>
+    <%= link_to "Edit " + @work.name, edit_work_path(@work) %> |
+    <%= link_to "Delete " + @work.name, work_path(@work),:data => {:confirm => "Are you sure?",:method => "delete"} %>
 
   </div>
 </div>
