@@ -2,7 +2,6 @@ class WorksController < ApplicationController
 
   def index
     @works = Work.all
-    @work = Work.new
     render :index
   end
 
@@ -50,7 +49,6 @@ class WorksController < ApplicationController
 
   def sort
     @works = Work.all.order("name")
-    @work = Work.new
     render :index
   end
 

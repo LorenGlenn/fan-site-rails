@@ -1,17 +1,13 @@
 <%= render "layouts/errors", :object => @work %>
 
+<div class="edit-form">
 <%= form_for @work do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-  <%= f.label :artist %>
-  <%= f.text_field :artist %>
-  <%= f.label :author %>
-  <%= f.text_field :author %>
-  <%= f.label :subgenre %>
-  <%= f.text_field :subgenre %>
-  <%= f.label :image %>
-  <%= f.text_field :image %>
-  <%= f.submit 'Save'%>
+  <%= f.text_field :name, :class => 'form-control', :placeholder => "name" %>
+  <%= f.text_area :description, :class => 'form-control', :placeholder => "description"%>
+  <%= f.text_field :artist, :class => 'form-control', :placeholder => "artist"%>
+  <%= f.text_field :author, :class => 'form-control', :placeholder => "author"%>
+  <%= f.text_field :subgenre, :class => 'form-control', :placeholder => "subgenre" %>
+  <%= f.text_field :image, :class => 'form-control', :placeholder => "image url" %>
+  <%= f.submit 'Save', :class => "btn btn-primary"%>
 <% end %>
+</div>

@@ -1,11 +1,4 @@
-<h1>Comics</h1>
-
-<%= form_tag(work_search_path(@works[0]), :method => "get", id: "search-form") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search" %>
-    <%= submit_tag "Search", :name => nil %>
-<% end %>
-
-<%= link_to "Sort AtoZ", work_sort_path(@works[0]) %>
+<h1 class="center"><%= image_tag "tag.png", :class => "header-brand"%>Comic Emporium</h1>
 
 <div class="row">
   <div class="dark center">
@@ -16,11 +9,11 @@
 </div>
 </div>
 
-
-
+<br>
+<h4>Sort By: <%= link_to "A-Z", works_sort_path %> | </h4>
 <div class="row"> <!-- featured -->
   <% @works.each do |work| %>
-    <div class="col-md-6"><!-- main -->
+    <div class="col-md-4 center"><!-- main -->
       <div class="box well">
       <%= link_to image_tag(work.image), work_path(work) %>
        <h3><%= link_to work.name, work_path(work) %></h3>

@@ -1,15 +1,19 @@
 <h1>Details for <%= @work.name %> </h1>
 
+<div class="row">
+  <div class="col-md-12 well2">
 
-<ul>
-  <li><%= image_tag @work.image %></li>
-  <li><%= @work.name %></li>
-  <li><%= @work.description %></li>
-  <li><%= @work.artist %></li>
-  <li><%= @work.author %></li>
-  <li><%= @work.subgenre %></li>
-  <li><%= @work.avgrating %></li>
-</ul>
+<%= image_tag @work.image, :class => "pull-left" %>
+  <h3>Name: <%= @work.name %></h3>
+  <h4>Description: <%= @work.description %></h4>
+  <h4>Artist: <%= @work.artist %></h4>
+  <h4>Author: <%= @work.author %></h4>
+  <h4>SubGenre: <%= @work.subgenre %></h4>
+  <h4>Average Fan Rating: <%= @work.avgrating %></h4>
+
+
+  </div>
+</div>
 
 <% if @work.reviews.any? %>
 <h3>Reviews for <%= @work.name %> </h3>
