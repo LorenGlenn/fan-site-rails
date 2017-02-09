@@ -2,6 +2,7 @@ class WorksController < ApplicationController
 
   def index
     @works = Work.all
+    @work = Work.new
     render :index
   end
 
@@ -49,9 +50,15 @@ class WorksController < ApplicationController
 
   def sort
     @works = Work.all.order("name")
+    @work = Work.new
     render :index
   end
-#test
+
+  def search
+    @results = Work.basic_search(params[:search])
+    render :results
+  end
+
   private
     def work_params
       params.require(:work).permit(:name, :description, :artist, :author, :subgenre, :image )

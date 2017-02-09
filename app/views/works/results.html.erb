@@ -1,0 +1,18 @@
+<h1>Results</h1>
+
+<% if @results.any? %>
+<ul>
+  <% @results.each do |r| %>
+  <li><%= image_tag r.image %></li>
+  <li><%= r.name %></li>
+  <li><%= r.description %></li>
+  <li><%= r.artist %></li>
+  <li><%= r.author %></li>
+  <li><%= r.subgenre %></li>
+  <li><%= r.avgrating %></li>
+  <small> Posted: <%= time_ago_in_words(r.created_at) %> ago </small>
+  <% end %>
+</ul>
+<% else %>
+  There are no results please try again
+<% end %>

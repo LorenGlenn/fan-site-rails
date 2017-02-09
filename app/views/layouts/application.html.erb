@@ -17,6 +17,9 @@
       <%= link_to "New Comic", new_work_path, :class => 'navbar-brand' %>
     </nav>
 
+    <%= flash[:alert] %>
+    <%= flash[:notice] %>
+
     <%= yield %>
 
   </body>
